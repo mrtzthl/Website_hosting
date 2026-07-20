@@ -2,17 +2,30 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0;url=/de.html">
   <title>Moritz Thiel - Redirecting</title>
   <script>
     (function() {
-      const userLang = navigator.language || navigator.userLanguage;
-      if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
-        if (userLang.startsWith('de')) {
-          window.location.replace('/de.html');
-        } else {
-          window.location.replace('/en.html');
+      var hostname = window.location.hostname;
+      var isGitHubPages = hostname.includes('github.io');
+      var currentPath = window.location.pathname;
+      
+      // Determine base path
+      var basePath = '';
+      if (isGitHubPages) {
+        // On GitHub Pages, extract the repo name from the current path
+        var pathParts = currentPath.split('/').filter(Boolean);
+        if (pathParts.length > 0) {
+          basePath = '/' + pathParts[0];
         }
+      }
+      
+      var userLang = navigator.language || navigator.userLanguage;
+      var normalizedPath = currentPath.replace(/\/index\.html$/i, '').replace(/\/$/, '');
+      var isRoot = normalizedPath === basePath || normalizedPath === '' || normalizedPath === '/';
+      
+      if (isRoot) {
+        var targetPath = userLang.startsWith('de') ? 'de.html' : 'en.html';
+        window.location.replace(basePath + '/' + targetPath);
       }
     })();
   </script>

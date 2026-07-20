@@ -2,10 +2,24 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0;url=/en.html">
-  <title>Redirecting to English</title>
+  <title>Redirecting to EN</title>
   <script>
-    window.location.replace('/en.html');
+    (function() {
+      var hostname = window.location.hostname;
+      var isGitHubPages = hostname.includes('github.io');
+      var currentPath = window.location.pathname;
+      
+      // Determine base path
+      var basePath = '';
+      if (isGitHubPages) {
+        var pathParts = currentPath.split('/').filter(Boolean);
+        if (pathParts.length > 0) {
+          basePath = '/' + pathParts[0];
+        }
+      }
+      
+      window.location.replace(basePath + '/en.html');
+    })();
   </script>
 </head>
 <body></body>

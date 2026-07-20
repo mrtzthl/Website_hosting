@@ -2,10 +2,24 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0;url=/de.html">
-  <title>Redirecting to German</title>
+  <title>Redirecting to DE</title>
   <script>
-    window.location.replace('/de.html');
+    (function() {
+      var hostname = window.location.hostname;
+      var isGitHubPages = hostname.includes('github.io');
+      var currentPath = window.location.pathname;
+      
+      // Determine base path
+      var basePath = '';
+      if (isGitHubPages) {
+        var pathParts = currentPath.split('/').filter(Boolean);
+        if (pathParts.length > 0) {
+          basePath = '/' + pathParts[0];
+        }
+      }
+      
+      window.location.replace(basePath + '/de.html');
+    })();
   </script>
 </head>
 <body></body>
