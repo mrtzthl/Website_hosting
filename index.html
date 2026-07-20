@@ -2,16 +2,16 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0;url=/de/">
+  <meta http-equiv="refresh" content="0;url=/de.html">
   <title>Moritz Thiel - Redirecting</title>
   <script>
     (function() {
       const userLang = navigator.language || navigator.userLanguage;
       if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
         if (userLang.startsWith('de')) {
-          window.location.replace('/de/');
+          window.location.replace('/de.html');
         } else {
-          window.location.replace('/en/');
+          window.location.replace('/en.html');
         }
       }
     })();
