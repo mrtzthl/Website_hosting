@@ -1,50 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Moritz Thiel - Redirecting</title>
-  <script>
-    (function() {
-      var hostname = window.location.hostname;
-      var isGitHubPages = hostname.includes('github.io');
-      var currentPath = window.location.pathname;
-      
-      // Determine base path
-      var basePath = '';
-      if (isGitHubPages) {
-        // On GitHub Pages, extract the repo name from the current path
-        var pathParts = currentPath.split('/').filter(Boolean);
-        if (pathParts.length > 0) {
-          basePath = '/' + pathParts[0];
-        }
-      }
-      
-      var userLang = navigator.language || navigator.userLanguage;
-      var normalizedPath = currentPath.replace(/\/index\.html$/i, '').replace(/\/$/, '');
-      var isRoot = normalizedPath === basePath || normalizedPath === '' || normalizedPath === '/';
-      
-      if (isRoot) {
-        var targetPath = userLang.startsWith('de') ? 'de.html' : 'en.html';
-        window.location.replace(basePath + '/' + targetPath);
-      }
-    })();
-  </script>
-  <style>
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background: #fafafa;
-    }
-    body::after {
-      content: 'Loading...';
-      font-size: 18px;
-      color: #666;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Pages Test</title>
 </head>
-<body></body>
+<body>
+    <h1>Willkommen auf meiner GitHub Pages Testseite!</h1>
+    <p>Dies ist die Startseite.</p>
+
+    <a href="unterseite.html">Zur Unterseite</a>
+</body>
 </html>
